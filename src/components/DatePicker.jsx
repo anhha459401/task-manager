@@ -56,7 +56,7 @@ export default function DatePicker({ value, onChange }) {
 
       {/* Calendar */}
       {open && (
-        <div className="absolute bottom-full mb-2 z-[9999] bg-white border-gray-500 rounded-2xl shadow-lg p-4 w-72">
+        <div className="absolute bottom-full mb-2 z-[9999] bg-white border border-gray-300 rounded-2xl shadow-lg p-4 w-72">
           {/* Header */}
           <div className="flex justify-between items-center mb-3">
             <button
