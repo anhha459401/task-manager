@@ -1,3 +1,5 @@
+import CustomSelect from "./CustomSelect";
+
 export default function SearchFilter({
   searchTerm,
   setSearchTerm,
@@ -7,7 +9,7 @@ export default function SearchFilter({
   setTimeFilter,
 }) {
   return (
-    <div className="bg-white rounded-3xl shadow-sm p-5 mb-8 space-y-4">
+    <div className="bg-white rounded-3xl shadow-sm p-5 mb-8 space-y-5">
       {/* Ô tìm kiếm */}
       <div>
         <input
@@ -15,38 +17,38 @@ export default function SearchFilter({
           placeholder="Tìm kiếm theo tên công việc..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:border-indigo-500 text-base placeholder-gray-400"
+          className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-base placeholder-gray-400 transition-all"
         />
       </div>
 
-      {/* Hai select lọc */}
+      {/* Custom Select */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div>
-          <select
-            value={statusFilter}
-            onChange={(e) => setStatusFilter(e.target.value)}
-            className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:border-indigo-500 text-base appearance-none"
-          >
-            <option value="ALL">Tất cả trạng thái</option>
-            <option value="TODO">Chưa làm</option>
-            <option value="IN_PROGRESS">Đang làm</option>
-            <option value="DONE">Hoàn thành</option>
-          </select>
-        </div>
+        {/* Status */}
+        <CustomSelect
+          value={statusFilter}
+          onChange={setStatusFilter}
+          placeholder="Tất cả trạng thái"
+          options={[
+            { value: "ALL", label: "Tất cả trạng thái" },
+            { value: "TODO", label: "Chưa làm" },
+            { value: "IN_PROGRESS", label: "Đang làm" },
+            { value: "DONE", label: "Hoàn thành" },
+          ]}
+        />
 
-        <div>
-          <select
-            value={timeFilter}
-            onChange={(e) => setTimeFilter(e.target.value)}
-            className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:border-indigo-500 text-base appearance-none"
-          >
-            <option value="ALL">Tất cả thời gian</option>
-            <option value="TODAY">Hôm nay</option>
-            <option value="WEEK">Tuần này</option>
-            <option value="MONTH">Tháng này</option>
-            <option value="YEAR">Năm nay</option>
-          </select>
-        </div>
+        {/* Time */}
+        <CustomSelect
+          value={timeFilter}
+          onChange={setTimeFilter}
+          placeholder="Tất cả thời gian"
+          options={[
+            { value: "ALL", label: "Tất cả thời gian" },
+            { value: "TODAY", label: "Hôm nay" },
+            { value: "WEEK", label: "Tuần này" },
+            { value: "MONTH", label: "Tháng này" },
+            { value: "YEAR", label: "Năm nay" },
+          ]}
+        />
       </div>
     </div>
   );

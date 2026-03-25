@@ -24,14 +24,14 @@ export default function TaskCard({ task, onEdit, onDelete }) {
           <button
             onClick={() => onEdit(task)}
             type="button"
-            className="p-2 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-xl transition-colors"
+            className="p-2 text-gray-400 cursor-pointer hover:text-indigo-600 hover:bg-indigo-50 rounded-xl transition-colors"
           >
             <Edit2 className="w-4 h-4" />
           </button>
           <button
             onClick={() => onDelete(task.id)}
             type="button"
-            className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-xl transition-colors"
+            className="p-2 text-gray-400 cursor-pointer hover:text-red-600 hover:bg-red-50 rounded-xl transition-colors"
           >
             <Trash2 className="w-4 h-4" />
           </button>

@@ -46,11 +46,7 @@ export default function App() {
       }
       return matchSearch && matchStatus && matchTime;
     })
-    .sort((a, b) => {
-      if (!a.deadline) return 1;
-      if (!b.deadline) return -1;
-      return dayjs(a.deadline) - dayjs(b.deadline);
-    });
+    .sort((a, b) => b.id - a.id);
 
   const stats = {
     total: tasks.length,
@@ -91,7 +87,7 @@ export default function App() {
   const confirmDelete = () => {
     if (taskToDelete) {
       deleteTask(taskToDelete);
-      toast.error("Đã xóa công việc thành công!", { theme: "colored" });
+      toast.success("Đã xóa công việc thành công!", { theme: "colored" });
       setTaskToDelete(null);
       setShowConfirm(false);
     }

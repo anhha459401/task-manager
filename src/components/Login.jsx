@@ -31,7 +31,7 @@ export default function Login({ onLogin }) {
           />
           <button
             type="submit"
-            className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-4 rounded-2xl font-semibold text-lg transition-all active:scale-[0.98]"
+            className="w-full bg-indigo-600 hover:bg-indigo-700 text-white cursor-pointer py-4 rounded-2xl font-semibold text-lg transition-all active:scale-[0.98]"
           >
             Đăng nhập
           </button>
