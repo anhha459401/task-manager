@@ -1,38 +1,91 @@
-# 📝 Task Manager App
+# 🗂️ Task Manager App (React + Tailwind)
 
-## 🚀 Giới thiệu
+Ứng dụng quản lý công việc (To-Do List) hiện đại, hỗ trợ phân loại trạng thái, tìm kiếm, lọc, phân trang và nhiều tính năng nâng cao.
 
-Task Manager App là ứng dụng quản lý công việc cá nhân được xây dựng bằng React.
-Ứng dụng cho phép người dùng tạo, chỉnh sửa, theo dõi và quản lý tiến độ công việc một cách trực quan.
+---
 
-Dự án tập trung vào:
+🌐 Demo Online
 
-- Trải nghiệm người dùng (UX)
-- Giao diện responsive
-- Kiến trúc component rõ ràng, dễ mở rộng
+👉 Trải nghiệm trực tiếp ứng dụng tại:
+
+🔗 Live Demo: https://your-vercel-link.vercel.app
+
+### ✨ Chức năng chính
+
+- 🔐 Đăng nhập đơn giản theo tên (lưu localStorage)
+- 📝 Thêm / Sửa / Xóa công việc
+- 📌 Phân loại trạng thái:
+  - TODO (Chưa làm)
+  - IN_PROGRESS (Đang làm)
+  - DONE (Hoàn thành)
+
+- 🔍 Tìm kiếm theo tên công việc
+- 🎯 Lọc theo:
+  - Trạng thái
+  - Thời gian (Hôm nay / Tuần / Tháng / Năm)
+
+- 📊 Thống kê:
+  - Tổng công việc
+  - Đã hoàn thành
+  - Quá hạn
+
+---
+
+### 📱 Responsive (Mobile Friendly)
+
+- Giao diện tối ưu cho mobile
+- Tabs chuyển cột (TODO / IN_PROGRESS / DONE)
+- Filter dạng dropdown (toggle bằng icon ☰)
+- Tối ưu không gian hiển thị
+
+---
+
+### 🧠 Tính năng nâng cao
+
+- 📄 Phân trang (Pagination)
+- ⏰ Deadline + cảnh báo quá hạn
+- 🎨 UI hiện đại với TailwindCSS
+- 🔥 Custom Select (dropdown đẹp, thay thế `<select>` mặc định)
+- 📅 Custom DatePicker + TimePicker
+
+---
+
+### 🖼️ Avatar người dùng
+
+- Hiển thị chữ cái đầu nếu chưa có ảnh
+- Click avatar để upload ảnh
+- Lưu ảnh theo từng user bằng `localStorage`
+- Tự động load lại khi đăng nhập
+
+---
+
+### ✅ Bulk Actions
+
+- Chọn nhiều công việc
+- Xóa nhiều công việc cùng lúc
 
 ---
 
 ## 🛠️ Công nghệ sử dụng
 
-- React (Hooks)
-- Vite
-- Tailwind CSS
-- Custom Hook (`useLocalStorage`)
-- LocalStorage
+- ⚛️ ReactJS (Hooks)
+- 🎨 TailwindCSS
+- 🔔 React Toastify
+- 📦 Day.js
+- 🎯 Lucide Icons
 
 ---
 
-## ▶️ Hướng dẫn cài đặt và chạy local
+## ⚙️ Cài đặt & chạy project
 
 ### 1. Clone project
 
 ```bash
-git clone https://github.com/your-username/task-manager.git
+git clone <repo-url>
 cd task-manager
 ```
 
-### 2. Cài đặt dependencies
+### 2. Cài đặt thư viện
 
 ```bash
 npm install
@@ -44,204 +97,36 @@ npm install
 npm run dev
 ```
 
-### 4. Truy cập
-
-```
-http://localhost:5173
-```
-
 ---
 
-## ✨ Tính năng chính
+## 💾 Lưu trữ dữ liệu
 
-- ➕ Thêm công việc (Modal)
-- ✏️ Chỉnh sửa công việc (title + deadline)
-- ❌ Xóa công việc (Confirm Modal)
-- 🔄 Cập nhật trạng thái
-- 🔍 Tìm kiếm công việc
-- 📂 Lọc theo trạng thái
-- 📊 Phân trang danh sách task
-- 📈 Thống kê nhanh
-- ⏰ Deadline (ngày + giờ + phút)
-- ⚠️ Highlight task quá hạn
-- 💾 Lưu dữ liệu bằng localStorage
-- 📱 Responsive (mobile & desktop)
+Ứng dụng sử dụng **localStorage**:
 
----
-
-## 🧩 Kiến trúc Component
-
-Dự án được chia thành các component nhỏ, mỗi component đảm nhiệm một chức năng riêng:
-
-### 🔹 `Header.jsx`
-
-- Hiển thị tiêu đề ứng dụng
-- Có thể mở rộng thêm navigation hoặc user info
-
----
-
-### 🔹 `TaskColumn.jsx`
-
-- Chia task theo từng trạng thái:
-  - TODO
-  - IN_PROGRESS
-  - DONE
-
-- Giúp UI rõ ràng, dễ quản lý
-
----
-
-### 🔹 `TaskCard.jsx`
-
-- Hiển thị thông tin từng task:
-  - Title
-  - Deadline
-  - Status
-
-- Hỗ trợ:
-  - Click đổi trạng thái
-  - Hiển thị overdue
-  - Trigger edit/delete
-
----
-
-### 🔹 `TaskModal.jsx`
-
-- Modal dùng để:
-  - Thêm task
-  - Chỉnh sửa task
-
-- Bao gồm:
-  - Input title
-  - Chọn ngày
-  - Chọn giờ (TimePicker)
-
----
-
-### 🔹 `ConfirmModal.jsx`
-
-- Hiển thị khi xóa task
-- Tránh thao tác nhầm
-- Tăng UX chuyên nghiệp
-
----
-
-### 🔹 `SearchFilter.jsx`
-
-- Tìm kiếm theo tên task
-- Lọc theo trạng thái
-- Giúp quản lý task dễ hơn khi dữ liệu lớn
-
----
-
-### 🔹 `StatsBar.jsx`
-
-- Hiển thị thống kê:
-  - Tổng số task
-  - Task hoàn thành
-  - Task quá hạn
-
-- Cập nhật realtime theo state
-
----
-
-### 🔹 `Pagination.jsx`
-
-- Phân trang danh sách task
-- Giúp UI gọn gàng khi có nhiều dữ liệu
-
----
-
-### 🔹 `Login.jsx` (Optional / mở rộng)
-
-- Component chuẩn bị cho việc:
-  - Authentication
-  - Phân quyền người dùng
-
----
-
-## 🧠 Giải thích quyết định kỹ thuật
-
-### 1. Tách component nhỏ
-
-**Lý do:**
-
-- Dễ maintain
-- Dễ test
-- Dễ mở rộng
-
----
-
-### 2. Sử dụng Modal (TaskModal + ConfirmModal)
-
-**Lý do:**
-
-- UX tốt hơn
-- Tách biệt luồng xử lý
-- Giống ứng dụng thực tế
-
----
-
-### 3. LocalStorage + Custom Hook
+### Tasks
 
 ```js
-const [tasks, setTasks] = useLocalStorage("tasks", []);
+taskManagerData = {
+  username1: [...tasks],
+  username2: [...tasks],
+};
 ```
 
-**Lý do:**
+### Avatar
 
-- Tái sử dụng logic
-- Code sạch hơn
-- Không phụ thuộc backend
-
----
-
-### 4. Deadline chuẩn ISO
-
-```txt
-YYYY-MM-DDTHH:mm
+```js
+avatar_<username> = "base64_image"
 ```
 
-**Lý do:**
-
-- Dễ parse bằng JS Date
-- So sánh chính xác
-
 ---
 
-### 5. Kiến trúc dạng module
+## 🎯 Hướng phát triển thêm
 
-- Mỗi chức năng = 1 component
-- Tách rõ UI và logic
-
-➡️ Đây là cách tổ chức gần với project thực tế
-
----
-
-## 🔮 Hướng phát triển
-
-- Drag & Drop task
-- Priority (High / Medium / Low)
-- Dark mode
-- Backend (API)
-- Authentication (Login/Register)
-- Realtime update (WebSocket)
-- Deploy production
-
----
-
-## 📌 Kết luận
-
-Ứng dụng đã:
-
-- Đáp ứng đầy đủ yêu cầu đề bài
-- Có thêm nhiều tính năng nâng cao:
-  - Modal
-  - Pagination
-  - Confirm action
-
-- Kiến trúc rõ ràng, dễ mở rộng
-
-➡️ Phù hợp với tiêu chuẩn của một ứng viên Frontend Intern
+- 🌐 Kết nối backend (Django / Node.js)
+- 🔐 Authentication (JWT, Google Login)
+- 🖼️ Crop & resize avatar trước khi upload
+- 📅 Drag & Drop task (Kanban)
+- 📊 Dashboard nâng cao (biểu đồ)
+- 🔔 Notification reminder
 
 ---
