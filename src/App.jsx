@@ -235,8 +235,18 @@ export default function App() {
           <div className="mb-6 bg-white rounded-2xl shadow p-4 flex justify-between">
             <span>Đã chọn {selectedTasks.length}</span>
             <div className="flex gap-2">
-              <button onClick={() => setSelectedTasks([])}>Bỏ chọn</button>
-              <button onClick={handleBulkDelete}>Xóa</button>
+              <button
+                onClick={() => setSelectedTasks([])}
+                className="px-4 py-2 text-sm bg-gray-100 cursor-pointer rounded-xl hover:bg-gray-200"
+              >
+                Bỏ chọn
+              </button>
+              <button
+                onClick={handleBulkDelete}
+                className="px-4 py-2 text-sm bg-red-600 cursor-pointer text-white rounded-xl hover:bg-red-700"
+              >
+                Xóa
+              </button>
             </div>
           </div>
         )}
