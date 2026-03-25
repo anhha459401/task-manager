@@ -23,23 +23,28 @@ export default function StatsBar({ stats }) {
   ];
 
   return (
-    <div className="grid grid-cols-3 gap-3 mb-8">
+    <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-6 sm:mb-8">
       {statItems.map((item, index) => {
         const Icon = item.icon;
         return (
           <div
             key={index}
-            className="bg-white rounded-3xl p-4 shadow-sm flex flex-col items-center text-center"
+            className="bg-white rounded-2xl sm:rounded-3xl 
+            p-3 sm:p-4 shadow-sm flex flex-col items-center text-center"
           >
             <div
-              className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-3 ${item.color}`}
+              className={`w-9 h-9 sm:w-12 sm:h-12 
+              rounded-xl sm:rounded-2xl 
+              flex items-center justify-center mb-2 sm:mb-3 ${item.color}`}
             >
-              <Icon className="w-7 h-7" />
+              <Icon className="w-5 h-5 sm:w-7 sm:h-7" />
             </div>
-            <p className="text-3xl font-semibold text-gray-900 mb-1">
+
+            <p className="text-xl sm:text-3xl font-semibold text-gray-900 mb-0.5 sm:mb-1">
               {item.value}
             </p>
-            <p className="text-xs text-gray-500 font-medium leading-tight">
+
+            <p className="text-[10px] sm:text-xs text-gray-500 font-medium leading-tight">
               {item.label}
             </p>
           </div>
