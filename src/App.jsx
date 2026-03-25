@@ -26,6 +26,20 @@ export default function App() {
   const [activeTab, setActiveTab] = useState("TODO"); // Tab cho mobile
 
   const { tasks, addTask, updateTask, deleteTask } = useTasks(currentUser);
+  const [selectedTasks, setSelectedTasks] = useState([]);
+  const [bulkDeleteMode, setBulkDeleteMode] = useState(false);
+
+  const toggleSelectTask = (id) => {
+    setSelectedTasks((prev) =>
+      prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id],
+    );
+  };
+
+  const handleBulkDelete = () => {
+    if (selectedTasks.length === 0) return;
+
+    setShowConfirm(true);
+  };
 
   const filteredTasks = tasks
     .filter((task) => {
@@ -85,12 +99,17 @@ export default function App() {
   };
 
   const confirmDelete = () => {
-    if (taskToDelete) {
+    if (selectedTasks.length > 0) {
+      selectedTasks.forEach((id) => deleteTask(id));
+      toast.success(`Đã xóa ${selectedTasks.length} công việc!`);
+      setSelectedTasks([]);
+    } else if (taskToDelete) {
       deleteTask(taskToDelete);
-      toast.success("Đã xóa công việc thành công!", { theme: "colored" });
-      setTaskToDelete(null);
-      setShowConfirm(false);
+      toast.success("Đã xóa công việc thành công!");
     }
+
+    setTaskToDelete(null);
+    setShowConfirm(false);
   };
 
   const saveTask = (taskData) => {
@@ -131,6 +150,29 @@ export default function App() {
           timeFilter={timeFilter}
           setTimeFilter={setTimeFilter}
         />
+        {selectedTasks.length > 0 && (
+          <div className="mb-6 bg-white rounded-2xl shadow p-4 flex items-center justify-between">
+            <span className="text-sm text-gray-600">
+              Đã chọn {selectedTasks.length} công việc
+            </span>
+
+            <div className="flex gap-2">
+              <button
+                onClick={() => setSelectedTasks([])}
+                className="px-4 py-2 text-sm bg-gray-100 cursor-pointer rounded-xl hover:bg-gray-200"
+              >
+                Bỏ chọn
+              </button>
+
+              <button
+                onClick={handleBulkDelete}
+                className="px-4 py-2 text-sm bg-red-600 cursor-pointer text-white rounded-xl hover:bg-red-700"
+              >
+                Xóa đã chọn
+              </button>
+            </div>
+          </div>
+        )}
 
         {/* ==================== MOBILE TABS ==================== */}
         <div className="lg:hidden flex bg-white rounded-2xl p-1 mb-6 shadow-sm">
@@ -167,6 +209,8 @@ export default function App() {
                 tasks={filteredTasks.filter((t) => t.status === col.status)}
                 onEdit={handleEdit}
                 onDelete={handleDelete}
+                selectedTasks={selectedTasks}
+                onSelect={toggleSelectTask}
               />
             </div>
           ))}

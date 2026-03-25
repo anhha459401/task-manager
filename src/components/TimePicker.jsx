@@ -54,7 +54,7 @@ export default function TimePicker({ value, onChange }) {
 
       {/* Dropdown */}
       {open && (
-        <div className="absolute bottom-full mb-2 z-[9999] bg-white border rounded-2xl shadow-lg p-4 w-64">
+        <div className="absolute left-0 sm:left-auto sm:right-0 bottom-full mb-2 z-[9999] bg-white border-gray-500 rounded-2xl shadow-lg p-4 w-64 max-w-[90vw]">
           {/* Quick select */}
           <div className="flex flex-wrap gap-2 mb-3">
             {["08:00", "12:00", "18:00", "22:00"].map((t) => (

@@ -4,7 +4,15 @@ import Pagination from "./Pagination";
 
 const TASKS_PER_PAGE = 3; // ← Bạn có thể đổi thành 8, 9, 10... tùy thích
 
-export default function TaskColumn({ title, color, tasks, onEdit, onDelete }) {
+export default function TaskColumn({
+  title,
+  color,
+  tasks,
+  onEdit,
+  onDelete,
+  selectedTasks,
+  onSelect,
+}) {
   const [currentPage, setCurrentPage] = useState(1);
 
   // Reset về trang 1 mỗi khi danh sách tasks thay đổi (search, lọc, thêm/sửa/xóa)
@@ -38,6 +46,8 @@ export default function TaskColumn({ title, color, tasks, onEdit, onDelete }) {
               task={task}
               onEdit={onEdit}
               onDelete={onDelete}
+              selectedTasks={selectedTasks}
+              onSelect={onSelect}
             />
           ))
         ) : (
